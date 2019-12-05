@@ -54,17 +54,9 @@ const followersArray = [];
   bigknell
 */
 
-const followersArray = ['tetondan', 'dustinmyers','justsml','luishrd', 'bigknell'];
 
-const container = document.querySelector('.cards');
 
-followersArray.forEach(arashhaji => {
-  axios.get("https://api.github.com/users/arashhaji")
-  .then(response => {
-    console.log(response);
-    container.appendChild(myCard(response.data));
 })
-  .catch(error => alert('error', error));
 
 })
 

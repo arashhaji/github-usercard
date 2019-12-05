@@ -2,7 +2,6 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
-
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -23,8 +22,6 @@
           Using that array, iterate over it, requesting data for each user, creating a new card for each
           user, and adding that card to the DOM.
 */
-
-const followersArray = [];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -53,3 +50,49 @@ const followersArray = [];
   luishrd
   bigknell
 */
+
+
+
+})
+
+})
+
+function myCard(obj){
+  
+  const cardDiv = document.createElement('div');
+  const image = document.createElement('img');
+  const disc = document.createElement('div');
+  const nameDiv = document.createElement('div');
+  const following = document.createElement('p');
+  const location = document.createElement('p');
+  const profile = document.createElement('p');
+  const followers = document.createElement('p');
+  const bio = document.createElement('p');
+  const usernameDiv = document.createElement('div');
+
+  image.src = obj.avatar_url;
+  nameDiv.textContent = obj.name;
+  usernameDiv.textContent = obj.login;
+  location.textContent = `Location: ${obj.location}`;
+  profile.textContent = `Profile: ${obj.html_url}`;
+  followers.textContent = `Followers: ${obj.followers}`;
+  following.textContent = `Following: ${obj.following}`;
+  bio.textContent = `Bio: ${obj.bio}`;
+
+  cardDiv.appendChild(image);
+  cardDiv.appendChild(disc);
+  disc.appendChild(nameDiv);
+  disc.appendChild(usernameDiv);
+  disc.appendChild(location);
+  disc.appendChild(profile);
+  disc.appendChild(followers);
+  disc.appendChild(following);
+  disc.appendChild(bio);
+
+  cardDiv.classList.add('card');
+  usernameDiv.classList.add('username');
+  nameDiv.classList.add('name');
+
+  return cardDiv
+  
+}

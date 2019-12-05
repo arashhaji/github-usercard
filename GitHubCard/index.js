@@ -53,3 +53,57 @@ const followersArray = [];
   luishrd
   bigknell
 */
+
+const followersArray = ['tetondan', 'dustinmyers','justsml','luishrd', 'bigknell'];
+
+const container = document.querySelector('.cards');
+
+followersArray.forEach(arashhaji => {
+  axios.get("https://api.github.com/users/arashhaji")
+  .then(response => {
+    console.log(response);
+    container.appendChild(myCard(response.data));
+})
+  .catch(error => alert('error', error));
+
+})
+
+function myCard(obj){
+  
+  const cardDiv = document.createElement('div');
+  const image = document.createElement('img');
+  const disc = document.createElement('div');
+  const nameDiv = document.createElement('div');
+  const following = document.createElement('p');
+  const location = document.createElement('p');
+  const profile = document.createElement('p');
+  const followers = document.createElement('p');
+  const bio = document.createElement('p');
+  const usernameDiv = document.createElement('div');
+
+  image.src = obj.avatar_url;
+  nameDiv.textContent = obj.name;
+  usernameDiv.textContent = obj.login;
+  location.textContent = `Location: ${obj.location}`;
+  profile.textContent = `Profile: ${obj.html_url}`;
+  followers.textContent = `Followers: ${obj.followers}`;
+  following.textContent = `Following: ${obj.following}`;
+  bio.textContent = `Bio: ${obj.bio}`;
+
+  cardDiv.appendChild(image);
+  cardDiv.appendChild(disc);
+  disc.appendChild(nameDiv);
+  disc.appendChild(usernameDiv);
+  disc.appendChild(location);
+  disc.appendChild(profile);
+  disc.appendChild(followers);
+  disc.appendChild(following);
+  disc.appendChild(bio);
+
+  cardDiv.classList.add('card');
+  usernameDiv.classList.add('username');
+  nameDiv.classList.add('name');
+
+  return cardDiv
+  
+}
